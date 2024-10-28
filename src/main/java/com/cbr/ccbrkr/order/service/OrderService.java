@@ -16,11 +16,11 @@ public class OrderService {
 
     public String getOrderList(){
         CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitbreaker");
-        String url = "http://192.168.24.136/orderlist";
+        //String url = "http://192.168.24.136:8080/orderlist";
+        String url = "http://192.168.24.136:8080/orders";
 
         return circuitBreaker.run(() -> restTemplate.getForObject(url, String.class),
                 throwable -> getDefaultOrderList());
-
     }
 
     public String getDefaultOrderList(){
