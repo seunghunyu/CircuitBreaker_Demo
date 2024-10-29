@@ -1,7 +1,8 @@
 package com.cbr.ccbrkr.order.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
+//import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -14,8 +15,10 @@ public class OrderService {
     @Autowired
     private RestTemplate restTemplate;
 
+    //org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
+    //CircuitBreaker Factory 이용 방식
     public String getOrderList(){
-        CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitbreaker");
+        org.springframework.cloud.client.circuitbreaker.CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitbreaker");
         //String url = "http://192.168.24.136:8080/orderlist";
         String url = "http://192.168.24.136:8080/orders";
 
@@ -27,5 +30,15 @@ public class OrderService {
         return "A,B,C";
     }
 
+    @CircuitBreaker(name = "purchaseBreaker", fallbackMethod = "getDefaultPurchase")
+    public String purchase(){
+        return "purchase orderlist";
+    }
+
+    private String getDefaultPurchase(){
+        return "purchase default list";
+    }
 
 }
+
+

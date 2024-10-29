@@ -42,6 +42,6 @@ public class Resilience4JConfiguration {
 
         return factory -> factory.configure(builder -> builder.circuitBreakerConfig(circuitBreakerConfig)
                 .timeLimiterConfig(timeLimiterConfig).build(),
-                "circuitBreaker1","circuitBreaker2","circuitBra");
+                "circuitBreaker1","circuitBreaker2","circuitBreaker3");
     }
 }
