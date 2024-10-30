@@ -25,4 +25,11 @@ public class OrderController {
         return wantOrders;
     }
 
+    @GetMapping("/purchase")
+    public String purchase(){
+//        String orderlist = orderService.purchase("milk, coke, meat");
+        String orderlist = orderService.purchase("{\"purpose\":\"AC\"}");
+        return orderlist;
+    }
+
 }

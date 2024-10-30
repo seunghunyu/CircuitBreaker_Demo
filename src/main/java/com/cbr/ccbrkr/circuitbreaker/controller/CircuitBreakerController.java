@@ -1,11 +1,10 @@
 package com.cbr.ccbrkr.circuitbreaker.controller;
 
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import io.vavr.collection.Seq;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
-import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
