@@ -10,9 +10,9 @@ import org.springframework.context.annotation.Configuration;
 
 import java.time.Duration;
 
-@Configuration
+//@Configuration
 public class Resilience4JConfiguration {
-    @Bean
+    //@Bean
     public Customizer<Resilience4JCircuitBreakerFactory> globalCustomConfiguration(){
         CircuitBreakerConfig circuitBreakerConfig = CircuitBreakerConfig.custom()
                 .failureRateThreshold(50)
@@ -29,7 +29,7 @@ public class Resilience4JConfiguration {
                 .build());
     }
 
-    @Bean
+//    @Bean
     public Customizer<Resilience4JCircuitBreakerFactory> specificCustomConfiguration2(){
         CircuitBreakerConfig circuitBreakerConfig = CircuitBreakerConfig.custom()
                 .failureRateThreshold(50)
@@ -42,6 +42,6 @@ public class Resilience4JConfiguration {
 
         return factory -> factory.configure(builder -> builder.circuitBreakerConfig(circuitBreakerConfig)
                 .timeLimiterConfig(timeLimiterConfig).build(),
-                "circuitBreaker1","circuitBreaker2","circuitBreaker3");
+                "circuitBreaker1","circuitBreaker2","circuitBreaker3","purchaseBreaker");
     }
 }
